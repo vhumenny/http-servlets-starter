@@ -6,7 +6,7 @@ import java.net.URL;
 public class UrlExample {
     public static void main(String[] args) throws IOException {
         var url = new URL
-                ("file:C:\\Users\\Admin\\dev\\http-servlets-starter\\src\\http\\socket\\DatagramRunner.java");
+                ("file:C:\\Users\\Admin\\dev\\http-servlets-starter\\src\\com\\dmdev\\http\\socket\\DatagramRunner.java");
         var urlConnection = url.openConnection();
         System.out.println(new String(urlConnection.getInputStream().readAllBytes()));
 
