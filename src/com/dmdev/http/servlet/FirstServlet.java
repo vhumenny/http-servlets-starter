@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
+import java.util.stream.Stream;
 
 @WebServlet("/first")
 public class FirstServlet extends HttpServlet {
@@ -26,15 +27,25 @@ public class FirstServlet extends HttpServlet {
 //            var header = headerNames.nextElement();
 //            System.out.println(req.getHeader(header));
 //        }
-
-
+        var paramValue = req.getParameter("param");
+        var parameterMap = req.getParameterMap();
 
         resp.setContentType("text/html; charset=UTF-8");
-        resp.setHeader("token","12345");
+        resp.setHeader("token", "12345");
 //        resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
         try (var writer = resp.getWriter()) {
             writer.write("<h1> Привет!</h2>");
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        var parameterMap = req.getParameterMap();
+//        System.out.println(parameterMap);
+        try (var reader = req.getReader();
+             var lines = reader.lines()) {
+            lines.forEach(System.out::println);
         }
     }
 
