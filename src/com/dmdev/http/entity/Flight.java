@@ -3,6 +3,7 @@ package com.dmdev.http.entity;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
 public class Flight {
     private Long id;
     private String flightNo;
